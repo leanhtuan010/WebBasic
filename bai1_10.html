@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 1 - 10</title>
+    <script>
+      let arr = [];
+
+      function nhap() {
+        let n = parseInt(document.getElementById("input_number").value);
+        arr.push(n);
+        document.getElementById("printElement").innerHTML += n + " ";
+        document.getElementById("input_number").value = "";
+      }
+      function print_Odd_Even() {
+        let res = "";
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] % 2 == 0) {
+            document.getElementById("printEven").innerHTML += arr[i] + " ";
+          } else {
+            document.getElementById("printOdd").innerHTML += arr[i] + " ";
+          }
+        }
+      }
+      function tong() {
+        let s = 0;
+        for (let i = 0; i < arr.length; i++) {
+          s += arr[i];
+        }
+        document.getElementById("printSum").innerHTML = s;
+      }
+      function maxArr() {
+        let res = Number.MIN_SAFE_INTEGER;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] > res) {
+            res = arr[i];
+          }
+        }
+        document.getElementById("printMax").innerHTML = res;
+      }
+      function isPrime(n) {
+        for (let i = 2; i <= Math.sqrt(n); i++) {
+          if (n % i == 0) {
+            return false;
+          }
+        }
+        return n > 1;
+      }
+      function prime() {
+        // let str = "";
+        for (let i = 0; i < arr.length; i++) {
+          if (isPrime(arr[i])) {
+            document.getElementById("printPrime").innerHTML += arr[i] + " ";
+          }
+        }
+      }
+      function xu_ly() {
+        print_Odd_Even();
+        tong();
+        maxArr();
+        prime();
+      }
+    </script>
+  </head>
+  <body>
+    <form action="">
+      <span>Nhập số vào mảng</span>
+      <br />
+      <input type="number" id="input_number" />
+      <button type="button" onclick="nhap()">Nhập</button>
+      <button type="button" onclick="xu_ly()">Kết quả</button>
+    </form>
+    <span>Các phần tử đã được nhập: </span>
+    <div id="printElement"></div>
+    <span>In ra số chẵn, số lẻ:</span>
+    <br />
+    <span>Các số lẻ là: </span>
+    <div id="printOdd"></div>
+    <span>Các số chẵn là: </span>
+    <div id="printEven"></div>
+    <span>Tổng các phần tử trong mảng là: </span>
+    <div id="printSum"></div>
+    <span>Số lớn nhất trong mảng là: </span>
+    <div id="printMax"></div>
+    <span>Các số nguyên tô trong mảng là: </span>
+    <div id="printPrime"></div>
+  </body>
+</html>
