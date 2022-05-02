@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 2</title>
+    <script>
+      let arr = [];
+      function nhap() {
+        let n = parseInt(document.getElementById("input_number").value);
+        for (let i = 0; i < n; i++) {
+          arr.push(Math.floor(Math.random() * 10));
+          document.getElementById("printMang").innerHTML += arr[i] + " ";
+        }
+      }
+      function find_min_max() {
+        let resMin = Number.MAX_SAFE_INTEGER;
+        let resMax = Number.MIN_SAFE_INTEGER;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] < resMin) {
+            resMin = arr[i];
+          }
+          if (arr[i] > resMax) {
+            resMax = arr[i];
+          }
+        }
+        document.getElementById("printMin").innerHTML = resMin;
+        document.getElementById("printMax").innerHTML = resMax;
+      }
+
+      function tong() {
+        let s = 0;
+        for (let i = 0; i < arr.length; i++) {
+          s += arr[i];
+        }
+        document.getElementById("printSumArr").innerHTML = s;
+      }
+
+      function xu_ly() {
+        nhap();
+        find_min_max();
+        tong();
+      }
+    </script>
+  </head>
+  <body>
+    <form action="">
+      <table border="1">
+        <tr>
+          <th colspan="2">Phát sinh mảng và tính toán</th>
+        </tr>
+        <tr>
+          <td>Nhập số phần tử</td>
+          <td><input type="number" id="input_number" /></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button type="button" onclick="xu_ly()">
+              Phát sinh và tính toán
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Mảng:</td>
+          <td>
+            <div id="printMang"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>GTLN (MAX) trong mảng:</td>
+          <td>
+            <div id="printMax"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>GTNN (MIN) trong mảng:</td>
+          <td>
+            <div id="printMin"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>Tổng mảng:</td>
+          <td>
+            <div id="printSumArr"></div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
